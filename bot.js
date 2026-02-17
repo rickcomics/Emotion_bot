@@ -1,7 +1,14 @@
 const TelegramBot = require('node-telegram-bot-api');
 const fs = require('fs');
 require('dotenv').config();
+const express = require('express');
+const app = express();
 
+// Прослушиваем порт из переменной окружения PORT
+const PORT = process.env.PORT || 666;
+app.listen(PORT, () => {
+  console.log(`Бот запущен (порт ${PORT})`);
+});
 
 const bot = new TelegramBot(process.env.TOKEN , {
   polling: {
