@@ -6,9 +6,25 @@ const app = express();
 
 // Прослушиваем порт из переменной окружения PORT
 const PORT = process.env.PORT || 666;
+
+// Эндпоинт для мониторинга
+app.get('/', (req, res) => {
+  res.status(200).send('Bot is running');
+});
+
+// Можно добавить эндпоинт /health для более явного мониторинга
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 app.listen(PORT, () => {
   console.log(`Бот запущен (порт ${PORT})`);
 });
+
+
+
+
+
 
 const bot = new TelegramBot(process.env.TOKEN , {
   polling: {
