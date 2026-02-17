@@ -21,7 +21,14 @@ app.listen(PORT, () => {
   console.log(`Бот запущен (порт ${PORT})`);
 });
 
-
+// самопингование через каждые 4 минуты
+setInterval(() => {
+  get(`http://localhost:${PORT}`, (res) => {
+    console.log("Self-ping:", res.statusCode);
+  }).on('error', (err) => {
+    console.error("Self-ping failed:", err.message);
+  });
+}, 240000);
 
 
 
