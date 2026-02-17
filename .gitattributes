@@ -1,0 +1,16 @@
+# Нормализуем окончания строк для текстовых файлов
+* text=auto
+
+# Для конкретных типов файлов задаём LF (рекомендуется для кода)
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Для .env и других конфигов — тоже LF
+*.env text eol=lf
+
+# Бинарные файлы — не трогать
+*.png binary
+*.jpg binary
+*.gif binary
